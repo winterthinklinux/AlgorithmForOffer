@@ -2,9 +2,21 @@ package beautiful;
 
 public class Sort {
 	public static void main(String[] args) {
+		int [] a = {1,2,4,6,7,8,9,8};
+		int low =0;
+		int high = a.length-1;
+		quickSort(a, low, high);
+//		int [] b = {1,2,4,6,7,8,9,8};
+//		heapSort(b);
+//		int [] c = {1,2,4,6,7,8,9,8};
+//		MergeSort(c, low, high); 
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i]);
+		}
+		
 		
 	}
-	public void quickSort(int [] a ,int low,int high){
+	public static void quickSort(int [] a ,int low,int high){
 		if(null == a||a.length<2) return ;
 		if(low<high){
 			int pivot = partition(a,low,high);
@@ -12,7 +24,7 @@ public class Sort {
 			quickSort(a, pivot+1, high);
 		}
 	}
-	public int partition(int  [] a,int low,int high){
+	public static int partition(int  [] a,int low,int high){
 		int key = a[low];
 		while(low<high){
 			while(low<high&&a[high]>key)
@@ -25,7 +37,7 @@ public class Sort {
 		a[low] = key;
 		return low;
 	}
-	public void MergeSort(int [] a,int low,int high){
+	public static void MergeSort(int [] a,int low,int high){
 		if(null==a||a.length<2) return ;
 		if(low<high){
 			int mid=(low+high)/2;
@@ -34,12 +46,12 @@ public class Sort {
 			Merge(a,low,mid,high);
 		}
 	}
-	public void Merge(int [] a ,int low,int mid,int high){
+	public static void Merge(int [] a ,int low,int mid,int high){
 		int [] temp = new int[high-low+1];
 		int i = low;
 		int j = mid+1;
 		int k = 0;
-		while(i<=mid&&j<high){
+		while(i<=mid&&j<=high){
 			if(a[i]<= a[j])  temp[k++] = a[i++];
 			else temp[k++] = a[j++];
 		}
@@ -48,7 +60,7 @@ public class Sort {
 		for(int t=0;t<temp.length;t++)
 			temp[low+t] = a[t];
 	}
-	public void heapSort(int [] a){
+	public static void heapSort(int [] a){
 		if(null==a||a.length<2) return ;
 		buildMaxHeap(a);
 		for(int i=a.length;i>=0;i--){
@@ -58,13 +70,13 @@ public class Sort {
 			adjustHeap(a,a.length,0);
 		}
 	}
-	public void buildMaxHeap(int [] a){
+	public static void buildMaxHeap(int [] a){
 		int mid =a.length/2;
 		for(int i =mid;i>=0;i--)
 			adjustHeap(a,a.length,i);
 		
 	}
-	public void adjustHeap(int [] a,int size,int parent){
+	public static void adjustHeap(int [] a,int size,int parent){
 		int left = 2*parent+1;
 		int right = 2*parent+2;
 		int largest = parent;
