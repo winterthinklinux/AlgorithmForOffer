@@ -1,7 +1,12 @@
 package beautiful;
 
 public class BinarySearch{
-
+	/**
+	 * 
+	 * @param a
+	 * @param key
+	 * @return
+	 */
 	public static int TestBinarySearch(int [] a,int key){
 		int low = 0;
 		int high = a.length-1;
